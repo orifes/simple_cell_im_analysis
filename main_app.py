@@ -31,7 +31,7 @@ def show_black_area_data(im_file, threshold, st_col, im_name):
 
 
 if __name__ == '__main__':
-    threshold_for_binary = st.number_input("Threshold value", min_value=0., max_value=1., step=0.1)
+    threshold_for_binary = st.number_input("Threshold value", min_value=0., max_value=1., step=0.1, value=0.5)
     all_cell_im = st.file_uploader("Upload your ALL CELL image")
     scar_image = st.file_uploader("Upload your SCAR image")
     if all_cell_im and scar_image:
