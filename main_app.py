@@ -10,8 +10,13 @@ def to_binary(im: np.ndarray, threshold: float):
     return bin_im
 
 
-def calc_black_percent(bin_im: np.ndarray):
-    return 1 - bin_im.sum() / bin_im.size
+def calc_area_percent(bin_im: np.ndarray, , count_black=False):
+    
+    area = bin_im.sum() / bin_im.size
+    if count_black:
+        return 1 - area
+    else:
+        return area
 
 
 def get_area(im, bin_threshold, count_black=False):
@@ -25,8 +30,8 @@ def get_area(im, bin_threshold, count_black=False):
     return area, bin_input
 
 
-def show_black_area_data(im_file, threshold, st_col, im_name, count_black=False):
-    area, bin_im = get_black_area(im_file, threshold)
+def show_area_data(im_file, threshold, st_col, im_name, count_black=False):
+    area, bin_im = get_area(im_file, threshold)
     area_name = "black" if count_black else 'white'
     st_col.subheader(f"binary image - {im_name}")
     st_col.image(bin_im)
@@ -41,13 +46,13 @@ if __name__ == '__main__':
     scar_image = st.file_uploader("Upload your SCAR image")
     if all_cell_im and scar_image:
         col1, col2 = st.columns(2)
-        all_cell_area, all_cell_bin_im = show_black_area_data(all_cell_im,
+        all_cell_area, all_cell_bin_im = show_area_data(all_cell_im,
                                                               threshold_for_binary,
                                                               col1,
                                                               "ALL CELL",
                                                               count_black
                                                              )
-        scar_area, scar_bin_im = show_black_area_data(scar_image,
+        scar_area, scar_bin_im = show_area_data(scar_image,
                                                       threshold_for_binary,
                                                       col2,
                                                       "SCAR",
