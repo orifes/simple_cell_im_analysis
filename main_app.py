@@ -10,13 +10,13 @@ def to_binary(im: np.ndarray, threshold: float):
     return bin_im
 
 
-def calc_area_percent(bin_im: np.ndarray, , count_black=False):
+# def calc_area_percent(bin_im: np.ndarray, , count_black=False):
     
-    area = bin_im.sum() / bin_im.size
-    if count_black:
-        return 1 - area
-    else:
-        return area
+#     area = bin_im.sum() / bin_im.size
+#     if count_black:
+#         return 1 - area
+#     else:
+#         return area
 
 
 def get_area(im, bin_threshold, count_black=False):
