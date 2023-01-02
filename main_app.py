@@ -31,7 +31,7 @@ def get_area(im, bin_threshold, count_black=False):
 
 
 def show_area_data(im_file, threshold, st_col, im_name, count_black=False):
-    area, bin_im = get_area(im_file, threshold)
+    area, bin_im = get_area(im_file, threshold, count_black)
     area_name = "black" if count_black else 'white'
     st_col.subheader(f"binary image - {im_name}")
     st_col.image(bin_im)
